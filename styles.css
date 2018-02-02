@@ -1,0 +1,53 @@
+body {
+    margin:0;
+    background: #fafafa;
+    width: 75%;
+    margin:0 auto;
+    height: 100vh;
+}
+
+.allartists {
+    display: block;
+    width:100%;
+    max-width: 980px;
+    margin:0 auto;
+}
+
+.artist {
+    width:300px;
+    display: inline-block;
+    border:1px solid powderblue;
+
+}
+.artist img {
+    width:100%;
+    max-width: 300px;
+    margin:0 auto;
+    display: block;
+}
+.info {
+    background-color: #ebebeb;
+    padding:5px 10px;
+}
+
+h3 {
+    text-align: center;
+    margin:0 0 10px 0;
+    width: 100%;
+}
+
+h4 {
+    display: inline-block;
+    width: 50%;
+    margin:0;
+}
+
+
+
+
+
+
+
+
+
+
