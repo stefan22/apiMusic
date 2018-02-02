@@ -4,5 +4,6 @@
 - so far i got 2 modules
     + main script api call
     + another one to extract key
+    + not actual key - i got mine at last.fm with a free account.
 
 
