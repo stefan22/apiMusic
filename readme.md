@@ -11,7 +11,9 @@
 
 
 <br/>
-<kbd>sample</kbd>
+<kbd>sample image</kbd>
 <br />
+
 ![](images/sampleimg.png)
+
 <br/>
