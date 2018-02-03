@@ -3,15 +3,17 @@ var APIKEY = (function(k) {
 var sub = k.key = k.key || {};
 
 //private
-var APIKEY = '0000000000d67d80a000000000';
+var APIKEY = '06f1dc77ed67d80a215a3c3b6aa901d3';
 
 
-
+var getKey = function() {
+    return APIKEY;
+}
 
 
 
 //public
-sub.APIKEY = APIKEY;
+sub.getKey = getKey;
 
 
 return k;

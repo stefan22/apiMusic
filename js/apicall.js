@@ -51,7 +51,7 @@ var jsonObj = {},
         };//onreadystate
 
         //api - getTopArtists
-        xhr.open('GET','http://ws.audioscrobbler.com/2.0/?method=chart.getTopArtists&api_key=' + keydep.APIKEY + '&format=json');
+        xhr.open('GET','http://ws.audioscrobbler.com/2.0/?method=chart.getTopArtists&api_key=' + keydep.getKey() + '&format=json');
         xhr.send(null);
 
 
