@@ -1,0 +1,87 @@
+body {
+    margin:0;  
+    box-sizing: border-box; 
+    font-family: 'Wendy+One|Libre+Baskerville', arial, sans-serif;  
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+}
+
+.maincontent {
+    flex: 1;
+    width:100%;
+    max-width: 966px;
+    margin:0 auto;
+}
+
+.allartists {
+    display: block;
+    width:100%;
+    
+}
+
+.artist {
+    width:322px;
+    display: inline-block;
+    
+
+}
+.artist img {
+    width: 100%;
+    max-width: 320px;
+    border: 1px solid #bcc8c9;
+    margin: 0 auto;
+    display: block;
+    box-sizing: border-box;
+}
+.info {
+    background-color: #e1e2e7;
+    padding:5px;
+    border:1px solid #fff;
+    box-sizing: border-box;
+}
+
+h3 {
+    text-align: center;
+    margin:5px 0 3px 0;
+    width: 100%;
+    font-weight: 400;
+    color: #0e0909;
+}
+
+h4 {
+    display: inline-block;
+    width: 50%;
+    margin:0;
+    font-weight: 400;
+    text-align: center;
+    font-size: 90%;
+}
+
+.main {
+    margin-bottom: 2em;
+}
+
+#results {
+    height: 80vh;
+    overflow: auto;
+}
+
+footer {
+    margin-top: 3.5em;
+}
+
+
+
+
+
+
+
+

@@ -23,8 +23,8 @@ var jsonObj = {},
             results += '<img src="' + allArtists[i].image[3]["#text"] + '" />';
             results += '<div class="info">';
             results += '<h3>' + allArtists[i].name + '</h3>';
-            results += '<h4>playcount: ' + allArtists[i].playcount + '</h4>';   
-            results += '<h4>listeners: ' + allArtists[i].listeners + '</h4>';   
+            results += '<h4>playcount: <br/>' +  + allArtists[i].playcount + '</h4>';   
+            results += '<h4>listeners: </br/>' + allArtists[i].listeners + '</h4>';   
             results += '</div></div>';  //info,artist  
 
         }

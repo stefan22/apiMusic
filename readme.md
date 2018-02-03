@@ -14,6 +14,6 @@
 <kbd>sample image</kbd>
 <br />
 
-![](images/sampleimg.png)
+![](images/music.png)
 
 <br/>
