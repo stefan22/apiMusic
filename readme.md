@@ -14,6 +14,6 @@
 <kbd>sample image</kbd>
 <br />
 
-![](images/music.png)
+![](images/mapp.png)
 
 <br/>

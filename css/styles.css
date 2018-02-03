@@ -100,29 +100,35 @@ footer {
     position: absolute;
     left: 25%;
     line-height: 40px;
-    top: 40%;
+    top: 25%;
 }
 
 .farrow-left::after {
-    content: 'left-arrow';
-    color:#dadada;display: inline-block;
+    content: 'prev 50';
+    color:#8d0000;
+    display: inline-block;
     margin-left: 10px;
+    line-height: 50px;
+    vertical-align: top;
 }
 
 .farrow-right {
     position: absolute;
     right: 25%;
     line-height: 40px;
-    top:40%;
+    top:25%;
 
 }
 
 .farrow-right::before {
-    content: 'right-arrow';
-    color:#dadada;
+    content: 'next 50';
+    color:#8d0000;
     display: inline-block;
     margin-right: 10px;
+    line-height: 50px;
+    vertical-align: top;
 }
+
 
 .innerfoot {
     display: block;
@@ -130,10 +136,18 @@ footer {
 }
 
 .innerfoot a {
-    color: #fafafa;
+    color: #8e0000;
     font-weight: 100;
     text-decoration: none;
-    font-size: 90%;
+    cursor: pointer;
+}
+
+.innerfoot a:active {
+    outline: none;
+}
+
+.innerfoot a:hover {
+    color:#e3e3e3;
 }
 
 .innerfoot img {
