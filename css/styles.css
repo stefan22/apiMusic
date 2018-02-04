@@ -31,6 +31,7 @@ h1 {
 .artist {
     width:322px;
     display: inline-block;
+    cursor: pointer;
     
 
 }
@@ -165,6 +166,21 @@ small {
     mix-blend-mode: lighten;
     font-weight: 200;
     font-style: oblique;
+}
+
+#isposition {
+    height: 65px;
+}
+
+#isposition small {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#isposition p {
+    vertical-align: middle;
+    line-height: 65px;
+    font-size: 1.5em;
 }
 
 

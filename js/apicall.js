@@ -3,7 +3,7 @@ var MUSIC = (function(m, keydep) {
 var sub = m.music = m.music || {};
 
 //dependencies
-//var keydep = m.key;
+//keydep, dartists
 
 var jsonObj = {},
     output = '',
@@ -11,9 +11,8 @@ var jsonObj = {},
     totalCount = 50,
     //callback
     yoman = function(res) {
-        console.log(res);
+        //console.log(res);
         var allArtists = res.artists.artist;
-        console.log(allArtists);
         //output
         results += '<div class="allartists">';
 
@@ -36,7 +35,9 @@ var jsonObj = {},
 
 
     //api call
-    apiCall = function() {
+    apiCall = function(key) {
+        //passing key
+        key = keydep.getKey();
         xhr = new XMLHttpRequest();
         xhr.overrideMimeType('application/json');
         xhr.onreadystatechange = function() {
@@ -44,6 +45,16 @@ var jsonObj = {},
                     //debugger;
                     output = xhr.responseText;
                     jsonObj = JSON.parse(output);
+                    //add to localstorage
+                    //console.log(jsonObj);
+                    
+                    if(typeof(Storage) !== undefined) {
+                        localStorage.setItem(
+                            'artists',
+                            JSON.stringify(jsonObj.artists.artist)
+                        );
+                    }
+                    
                     //callback
                     yoman(jsonObj);      
             }
@@ -51,9 +62,8 @@ var jsonObj = {},
         };//onreadystate
 
         //api - getTopArtists
-        xhr.open('GET','http://ws.audioscrobbler.com/2.0/?method=chart.getTopArtists&api_key=' + keydep.getKey() + '&format=json');
+        xhr.open('GET','http://ws.audioscrobbler.com/2.0/?method=chart.getTopArtists&api_key=' + key + '&format=json');
         xhr.send(null);
-
 
     };
 
@@ -66,6 +76,7 @@ var jsonObj = {},
     //public
     sub.yoman = yoman;
     sub.apiCall = apiCall;
+    sub.jsonObj = jsonObj;
 
 
     return m;
