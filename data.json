@@ -1,0 +1,29 @@
+{
+    "music": [
+        {
+            "heading": 
+                {
+                    "h1": "Music",
+                    "h3": "an h3 title",
+                    "h4": "an h4 title"
+                }
+            
+        },
+        {
+            "maincontent": 
+                {
+                    "h1": "Music",
+                    "h3": "an h3 title"
+                }
+            
+        },
+        {
+            "footer": 
+                {
+                    "h1": "Music",
+                    "h3": "an h3 title"
+                }
+            
+        }
+    ]
+}
