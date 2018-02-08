@@ -98,6 +98,7 @@ h1 {
     -webkit-transition:all .3s ease-in-out;
     transition: all .3s ease-in-out;
     z-index: 3;
+    display: block;
 }
 
 .info {
@@ -123,7 +124,7 @@ h3 {
 }
 
 h4 {
-    display: inline-block;
+    display: none;
     width: 20%;
     margin:0;
     font-weight: 400;
@@ -134,12 +135,14 @@ h4 {
 }
 
 .info h4:first-of-type {
+    display: none;
     position: absolute;
     left: 12px;
     bottom: -30px;
 }
 
 .info h4:last-of-type {
+    display: none;
     position: absolute;
     right: 5px;
     bottom: -30px;
@@ -147,6 +150,7 @@ h4 {
 
 .main {
     outline: 3px solid #333;
+    border-bottom:3px solid #333;
 }
 
 #results {
