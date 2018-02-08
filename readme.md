@@ -14,6 +14,6 @@
 <kbd>sample image</kbd>
 <br />
 
-![](images/sp.png)
+![](images/screenshot.png)
 
 <br/>
