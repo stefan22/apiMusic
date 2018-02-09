@@ -13,7 +13,7 @@
 
     //template
     var template = ''; 
-        template += '<div class="mainfootop"><div class="innerfoot">';
+        template += '<div class="mainfootop cf"><div class="innerfoot">';
         template += '<a class="farrow-left" href="#">';
         template += '<i class="fas fa-angle-left fa-3x"></i></a>';
         template += '<a class="farrow-right" href="#"> ';
