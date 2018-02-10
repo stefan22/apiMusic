@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music</title>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Wendy+One|Libre+Baskerville' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/artistinfo.css" />
+</head>
+<body>
+<h1>Popup Mockup</h1>
+<h2>Artist Info Popup</h2>
+<h4>Click to Open, click X to Close and click outside of it to close</h4>
+
+<button style="cursor: pointer;" id="artbutton">Click Artist Image, Show Artist Info</button>
+
+<div id="modinfo" class="modal">
+  <div class="modal-content">
+     <span class="close">&times;</span>
+     <h3>Artist Info</h3>
+     <div class="modal-inner">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex.</p>
+     </div><!-- endof modal-inner -->
+  </div><!-- endof modal-content -->
+</div>
+
+<script>
+//modinfo    
+var modinfo = document.getElementById('modinfo'),
+    //modal
+    modal = document.querySelector('#modinfo.modal'),
+    //artbutton
+    artbutton = document.getElementById('artbutton'),
+    
+    //allartists
+    //modartists = document.querySelectorAll('.allartists')[0].children,
+    
+    //x-close
+    modclose = document.querySelector('#modinfo span.close');
+
+    //button click evt
+    artbutton.addEventListener('click',function(e) {
+        //modal.style.display = 'block';
+        modal.classList.add('modalOn');
+
+    },false);
+
+
+    //span close x
+    modclose.addEventListener('click',function(e) {
+        modal.classList.remove('modalOn');
+
+    },false);
+
+
+    function outsideMod(e) {
+        if(e.target == modal) {
+             modal.classList.remove('modalOn');
+        }
+    }
+
+
+    document.addEventListener('click',outsideMod, false);
+
+
+</script>
+
+</body>
+</html>
