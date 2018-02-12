@@ -96,10 +96,10 @@ header {
 .artistolay {
     position: absolute;
     display: block;
-    width:100%;
+    width:98%;
     height: 100%;
     top: 0;
-    left: 0;
+    left: 3px;
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,.5);
@@ -212,7 +212,7 @@ header {
 
 /* makes an apperance */
 .artist:hover .info h4 {
-    bottom:3px;
+    bottom:8px;
     color:#eaeaea;
     -webkit-transition:.5s ease-in-out;
     transition: .5s ease-in-out;
@@ -433,6 +433,27 @@ small {
         height: 86vh;
     }
 
+    .farrow-left {
+        left: 12%;
+        top:7%;
+    }
+
+    .farrow-right {
+        right: 12%;
+        top:7%;
+    }
+
+    .farrow-left::after, .farrow-right::before {
+        font-size: 1.25em;
+        line-height: 70px;
+        vertical-align: top;
+
+    }
+
+    .innerfoot a {
+        font-size: 1.5em;
+    }
+
 
 
 }
@@ -440,27 +461,48 @@ small {
 
 @media screen and (max-width: 768px) {
 
-.maincontent {
-    width:100%;
-    max-width: 657px;
-}
+    .maincontent {
+        width:100%;
+        max-width: 657px;
+    }
 
-#results {
-    height: 81.25vh;
-}
+    #results {
+        height: 81.25vh;
+    }
 
-.artist:nth-child(3n+1) {
-    margin-right: 1.4em;
-}
+    .artist:nth-child(3n+1) {
+        margin-right: 1.4em;
+    }
 
-.artist:nth-child(3n+2) {
-    margin-left:1.4em;
-}
+    .artist:nth-child(3n+2) {
+        margin-left:1.4em;
+    }
 
-.spacer {
-    display: block;
-    height: 2rem;
-}
+    .spacer {
+        display: block;
+        height: 2rem;
+    }
+
+    .farrow-left {
+        left: 11%;
+        top:10%;
+    }
+
+    .farrow-right {
+        right: 12%;
+        top:10%;
+    }
+
+    .farrow-left::after, .farrow-right::before {
+        font-size: 1em;
+        line-height: 63px;
+        vertical-align: text-bottom;
+
+    }
+
+    .innerfoot a {
+        font-size: 1.35em;
+    }
 
 
 }
@@ -487,6 +529,11 @@ small {
         margin:0 auto;
     }
 
+    .info h3 {
+        max-width: 275px;
+    }
+
+
     .spacer {
         display: none;
     }
@@ -499,12 +546,45 @@ small {
         margin-bottom: 0;
     }
 
+    .farrow-left {
+        left: 7%;
+        top:24%;
+    }
+
+    .farrow-right {
+        right: 7%;
+        top:24%;
+    }
+
+    .farrow-left::after, .farrow-right::before {
+        content: '';
+        font-size: 1em;
+        line-height: 66px;
+        vertical-align: bottom;
+
+    }
+
+    .innerfoot a {
+        font-size: 1em;
+    }
+
+    #isposition p {
+        line-height: 66px;
+        font-size: 1.35em;
+    }
+
+
+
 }
 
 
 @media screen and (max-width: 375px) {
     #results {
         height: 71.5vh;
+    }
+
+    .info h3 {
+        max-width: 282px;
     }
 }
 
@@ -513,6 +593,12 @@ small {
     #results {
         height: 67vh;
     }
+
+    .info h3 {
+        max-width: 281px;
+    }
+
+
 }
 
 
