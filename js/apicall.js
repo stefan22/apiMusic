@@ -17,15 +17,21 @@ var jsonObj = {},
         results += '<div class="allartists">';
 
         for(var i=0; i < totalCount; i++) {
-
+            //3n+1, 3n+2
+            if(i > 1 && i % 2 == 0) {
+                //adding spacer after every two divs
+                results += '<div class="spacer"></div>';  
+            }    
+        
             results += '<div class="artist">';
-            results += '<img src="' + allArtists[i].image[3]["#text"] + '" />';
+            results += '<img src="' + allArtists[i].image[4]["#text"] + '" />';
             results += '<div class="info">';
             results += '<h3>' + allArtists[i].name + '</h3>';
             results += '<h4>playcount: <br/>' +  + allArtists[i].playcount + '</h4>';   
             results += '<h4>listeners: </br/>' + allArtists[i].listeners + '</h4>';   
-            results += '</div></div>';  //info,artist  
+            results += '</div></div>';  //info,artist
 
+            
         }
 
         results += '</div>';  //allartists

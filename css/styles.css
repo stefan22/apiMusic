@@ -28,10 +28,11 @@ h1 {
 }
 
 .wrapper {
-    display: flex;
+    display: block;
     min-height: 100vh;
-    flex-direction: column;
+    overflow:hidden;
 }
+
 
 /*
 * heading section
@@ -49,14 +50,14 @@ header {
 */
 
 .maincontent {
-    flex: 1;
     width:100%;
-    max-width: 968px;
+    max-width: 918px;
     margin:0 auto;
 }
 
 .main {
-    outline: 1px solid #424141;
+  display: block;
+  overflow: hidden;
    
 }
 
@@ -65,7 +66,8 @@ header {
 }
 
 #results {
-    height: 80.5vh;
+    height: 80vh;
+    display: block;
     overflow: auto;
 }
 
@@ -75,13 +77,16 @@ header {
     min-height: 100%;
     overflow-y: hidden;
     position: relative;
+
     
+}
+
+.allartists > .artist {
+    padding:0 3px;
 }
 
 .artist {
     position: relative;
-    width:322px;
-    height: 368px;
     display: inline-block;
     cursor: pointer;
     z-index: 4;
@@ -90,7 +95,6 @@ header {
 /* artist div overlay */
 .artistolay {
     position: absolute;
-    //display: none;
     display: block;
     width:100%;
     height: 100%;
@@ -106,12 +110,12 @@ header {
 
 .artist img {
     width: 100%;
-    max-width: 322px;
-    border: 1px solid #bcc8c9;
+    max-width: 300px;
+    /*border: 1px solid #bcc8c9;*/
     margin: 0 auto;
     display: block;
-    border:1px solid #fff;
-    box-sizing: border-box;
+    /*border:1px solid #fff;*/
+    /*box-sizing: border-box;*/
     z-index: 4;
 
 }
@@ -123,6 +127,8 @@ header {
     left: 50%;
     z-index: 1;
     display: block;
+    padding: 0;
+    margin:0;
     content: '';
     width: 0;
     height: 0;
@@ -221,6 +227,10 @@ header {
 * ...endof artist hover..        
 */
 
+.spacer {
+    display: none;
+}
+
 
 /* 
 *  artist info div 
@@ -230,7 +240,8 @@ header {
 .info {
     background-color: #424141;
     padding:5px;
-    border:1px solid #fff;
+    border:1px solid #424141;
+    border-top:1px solid #9E9E9E;
     box-sizing: border-box;
     height: 50px;
 }
@@ -292,7 +303,11 @@ h4 {
 
 footer {
     background-color: #000;
-    height: 110px;
+    width:100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
 }
 
 .mainfootop {
@@ -371,6 +386,11 @@ footer {
 }
 
 .mainfootbottom {
+    overflow:hidden;
+    display: block;
+}
+
+.mainfootbottom small {
     line-height: 30px;
 }
 
@@ -397,6 +417,113 @@ small {
     line-height: 65px;
     font-size: 1.5em;
 }
+
+
+
+/*
+*  media queries
+* --------------
+*/
+
+
+
+@media screen and (max-width: 1024px) {
+
+    #results {
+        height: 86vh;
+    }
+
+
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+.maincontent {
+    width:100%;
+    max-width: 657px;
+}
+
+#results {
+    height: 81.25vh;
+}
+
+.artist:nth-child(3n+1) {
+    margin-right: 1.4em;
+}
+
+.artist:nth-child(3n+2) {
+    margin-left:1.4em;
+}
+
+.spacer {
+    display: block;
+    height: 2rem;
+}
+
+
+}
+
+
+
+@media screen and (max-width: 414px) {
+
+    .maincontent {
+        max-width: 300px;
+    }
+
+    #results {
+        height: 74vh;
+    }
+
+    .artist {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    .info {
+        max-width: 300px;
+        margin:0 auto;
+    }
+
+    .spacer {
+        display: none;
+    }
+
+    .allartists > .artist {
+        margin-bottom: 1em;
+    }
+
+    .allartists > .artist:last-child {
+        margin-bottom: 0;
+    }
+
+}
+
+
+@media screen and (max-width: 375px) {
+    #results {
+        height: 71.5vh;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+    #results {
+        height: 67vh;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
