@@ -67,11 +67,13 @@ var ARTISTS  = (function(a,mapi,keydep) {
             //cycle through artists
             if(e == "IMG") {
                 for(var i=0; i < all.length; i++) {
-                    //remove overlay
-                    if(all[i].lastElementChild.className == 'artistolay') {
-                        han = han[i].lastChild;
-                        all[i].lastElementChild.parentElement.removeChild(han);
-                    }  
+                    if(all[i].className == "artist") {
+                        //remove overlay
+                        if(all[i].lastElementChild.className == 'artistolay') {
+                            han = han[i].lastChild;
+                            all[i].lastElementChild.parentElement.removeChild(han);
+                        }
+                    }//if artist      
                 }//for
             }
             //else
@@ -79,10 +81,12 @@ var ARTISTS  = (function(a,mapi,keydep) {
 
                 for(var i=0; i < all.length; i++) {
                     //remove overlay
-                    if(all[i].lastElementChild.className == 'artistolay') {
-                        han = han[i].lastChild;
-                        all[i].lastElementChild.parentElement.removeChild(han);
-                    }  
+                    if(all[i].className == "artist") {
+                        if(all[i].lastElementChild.className == 'artistolay') {
+                            han = han[i].lastChild;
+                            all[i].lastElementChild.parentElement.removeChild(han);
+                        }
+                    }//if artist      
                 }//for
             }
     },
@@ -104,29 +108,33 @@ var ARTISTS  = (function(a,mapi,keydep) {
 
             for(var i=0; i < results.length; i++) {
                 var lastChild;
-                if(results[i].lastChild.className == 'info') {
+                //added spacer
+                if(results[i].className == 'artist') {
+                    if(results[i].lastChild.className == 'info') {
 
-                    if(results[i].lastChild.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
-                        //console.log('name: ' + name);
-                        //console.log(Number(i) + 1);
-                        name = name;
-                        pos = Number(i) + 1;
-                        isImg = e.target;
-                       
-                    }//if name  
+                        if(results[i].lastChild.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
+                            //console.log('name: ' + name);
+                            //console.log(Number(i) + 1);
+                            name = name;
+                            pos = Number(i) + 1;
+                            isImg = e.target;
+                           
+                        }//if name  
 
-                } else {
+                    } else {
 
-                    if(results[i].lastChild.previousSibling.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
-                        //console.log('name: ' + name);
-                        //console.log(Number(i) + 1);
-                        name = name;
-                        pos = Number(i) + 1;
-                        isImg = e.target;
-                       
-                    }//if name  
+                        if(results[i].lastChild.previousSibling.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
+                            //console.log('name: ' + name);
+                            //console.log(Number(i) + 1);
+                            name = name;
+                            pos = Number(i) + 1;
+                            isImg = e.target;
+                           
+                        }//if name  
 
-                }//else  
+                    }//else  
+
+                }//if artist
 
             }//for
 
