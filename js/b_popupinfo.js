@@ -1,4 +1,5 @@
-/*
+/*    _copy of popupinfo.js_
+
   to improve on previous popupinfo.js going forward . (it works perfect so far with popupinfo.js but...)
   =================================================
 
