@@ -1,13 +1,16 @@
 var ARTISTS  = (function(a,mapi,keydep) {
 
     var sub = a.dartists = a.dartists || {};
+
+    //global var
+    var pos = pos || undefined;
         
     //dependencies => mapi,keydep
 
     //localStorage atm
     var artistsInLocalStorage = function() {
         //localstorage => artists (artists.artist)
-        var artists = localStorage.getItem('artists'),
+        var artists = localStorage.getItem('artists');
         artists = JSON.parse(artists);
         //console.log(artists);
         return artists;
@@ -61,7 +64,7 @@ var ARTISTS  = (function(a,mapi,keydep) {
 
     ArtistObj.prototype.ovrlayOff = function(e) {
         var all = document.querySelectorAll('.allartists'),
-            all = all[0].childNodes;
+            all = all[0].children;
             //handle
             var han = document.querySelectorAll('.allartists')[0].children;
             //cycle through artists
@@ -94,74 +97,85 @@ var ARTISTS  = (function(a,mapi,keydep) {
 
     //on page artists
     getArtists = function(e) {
-        
-        if(e.target.tagName == 'IMG') {
+        //to avoid collision
+        if(document.getElementById('modinfo') == null) {
 
-            //grab name - from img click
-            var name = e.target.nextElementSibling.firstElementChild.innerText,
-                //grabbing entire artists array
-                results = e.target.parentElement.parentElement.parentElement.children[0].children,
-                //position
-                pos,
-                isImg;
+            if(e.target.tagName == 'IMG') {
+
+                //grab name - from img click
+                var name = e.target.nextElementSibling.firstElementChild.innerText,
+                    //grabbing entire artists array
+                    results = e.target.parentElement.parentElement.parentElement.children[0].children,
+                    //position
+                    //pos,
+                    isImg;
 
 
-            for(var i=0; i < results.length; i++) {
-                var lastChild;
-                //added spacer
-                if(results[i].className == 'artist') {
-                    if(results[i].lastChild.className == 'info') {
+                for(var i=0; i < results.length; i++) {
+                    var lastChild;
+                    //added spacer
+                    if(results[i].className == 'artist') {
+                        if(results[i].lastChild.className == 'info') {
 
-                        if(results[i].lastChild.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
-                            //console.log('name: ' + name);
-                            //console.log(Number(i) + 1);
-                            name = name;
-                            pos = Number(i) + 1;
-                            isImg = e.target;
-                           
-                        }//if name  
+                            if(results[i].lastChild.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
+                                //console.log('name: ' + name);
+                                //console.log(Number(i) + 1);
+                                name = name;
+                                pos = Number(i) + 1;
+                                isImg = e.target;
+                               
+                            }//if name  
 
-                    } else {
+                        } else {
 
-                        if(results[i].lastChild.previousSibling.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
-                            //console.log('name: ' + name);
-                            //console.log(Number(i) + 1);
-                            name = name;
-                            pos = Number(i) + 1;
-                            isImg = e.target;
-                           
-                        }//if name  
+                            if(results[i].lastChild.previousSibling.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
+                                //console.log('name: ' + name);
+                                //console.log(Number(i) + 1);
+                                name = name;
+                                pos = Number(i) + 1;
+                                isImg = e.target;
+                               
+                            }//if name  
 
-                    }//else  
+                        }//else  
 
-                }//if artist
+                    }//if artist
 
-            }//for
+                }//for
 
-        }//artists
+            }//artist img
 
-        else {
-            //clicked outside
-            var noartist = new ArtistObj();
-            noartist.ovrlayOff();
-        }
+            else {
+                //clicked outside
+                var noartist = new ArtistObj();
+                noartist.ovrlayOff(); 
+            }
 
-        
+            var artist = new ArtistObj(name, pos, isImg);
+            artist.displayArtist();
+            artist.ovrlayOn(isImg);    
 
-        var artist = new ArtistObj(name, pos, isImg);
-        artist.displayArtist();
-        artist.ovrlayOn(isImg);
 
-    }, //getArtists
+        }//not while popupinfo is on
+
+
+    }; //getArtists
 
 
     //evt click
-    document.addEventListener('click', getArtists, false);
+    if(document.getElementById('modinfo') == null ) {
+        //popup not there
+        document.addEventListener('click', getArtists, false);
+
+    }
+
+    
         
 
 
     //public
     sub.artistsInLocalStorage = artistsInLocalStorage;
+    sub.pos = pos;
 
 
     return a;

@@ -1,6 +1,10 @@
-var ARTISTPOPUP = (function(a) {
+var ARTISTS = (function(a) {
 
     var sub = a.popup = a.popup || {};
+
+    //artists
+    var alc = a.dartists;
+
 
     var popup = {
 
@@ -28,16 +32,41 @@ var ARTISTPOPUP = (function(a) {
 
         innercontent: {
             class: "modal-inner",
-            inner: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex.</p>",
+            inner: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ex.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex.</p>",
             type: "div"    
         }
 
     }, //popup
 
+    ArtistObj = function(name) {
+        this.name = name
+        
+
+    };
+
+    ArtistObj.prototype.enterName = function() {
+        var allartists = alc.artistsInLocalStorage();
+        for(var i=0; i < allartists.length; i++) {
+            if(allartists[i].name.indexOf(this.name) > -1) {
+                popup.h3.inner = this.name;
+                buildpopup();
+                //exit
+                i = allartists.length;
+                
+                
+            }
+        }
+        
+
+    };
+
+
+
+
 
 
     //build popup
-    buildpopup = function() {
+    var buildpopup = function() {
         var ele = document,
             outerdiv = ele.createElement('div'),      //outerdiv
             outercontent = ele.createElement('div'),  //outercontent
@@ -68,46 +97,68 @@ var ARTISTPOPUP = (function(a) {
             document.getElementById('musik').
             appendChild(outerdiv);
 
+            //set display
+            outerdiv.classList.add('modalOn');
+            
+
     };
 
     
-    //buildpopup
-    buildpopup();
     
-
     //event fn globals
-    var modal = document.querySelector('#modinfo.modal'),  //entire modal class
-        results = document.getElementById('results'),      //results 
-        modartists = document.querySelectorAll('.allartists > .artist'), //allartists
-        modclose = document.querySelector('#modinfo span.close');  //x-close
+    var modal = document.querySelector('#modinfo.modal') || undefined,  //entire modal
+        results = document.getElementById('results') || undefined,      //results 
+        modartists = document.querySelectorAll('.allartists > .artist') || undefined,
+        modclose = document.querySelector('#modinfo span.close') || undefined; //x-close
+
+    
 
 
     //outside click fn
     var outsideMod = function(e) {
-        if(e.target == modal) {
-            //remove modal
-            modal.classList.remove('modalOn');
+        if(e.target.className == "modal modalOn") {
+            //remove div
+            document.getElementById('modinfo').
+            parentElement.removeChild(document.getElementById('modinfo'));
+            
+
+        }
+        if(e.target.className == "close") {
+            //remove div
+            document.getElementById('modinfo').
+            parentElement.removeChild(document.getElementById('modinfo'));
         }
 
     };
 
     //img click evt
     results.addEventListener('click', function(e) {
-        if(e.target.tagName === "IMG") {
-            modal.classList.add('modalOn');
+        //console.log(e);
+        var name = e.target.nextSibling.children[0].textContent;
+        if(e.target.tagName === "IMG" && document.getElementById('modinfo') == null) {
+            //ArtistObj(name);
+            var artone = new ArtistObj(name);
+            artone.enterName();
 
         }//if img
 
     },false);
 
-    //span close-x evt
-    modclose.addEventListener('click',function(e) {
-        modal.classList.remove('modalOn');
 
-    },false);
+    if(popup.outerdiv.id == "modinfo" || document.getElementById('modinfo')) {
+        //outside click evt
+        document.addEventListener('click',outsideMod, false);
 
-    //outside click evt
-    document.addEventListener('click',outsideMod, false);
+    }
+
+
+    
+
+
+
+    
+
+    
 
 
 
@@ -126,6 +177,6 @@ var ARTISTPOPUP = (function(a) {
     return a;
 
 
-})(ARTISTPOPUP || {});
+})(ARTISTS || {});
 
     
