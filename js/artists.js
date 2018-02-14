@@ -18,10 +18,11 @@ var ARTISTS  = (function(a,mapi,keydep) {
     },
 
     //constructor
-    ArtistObj = function(name,id,img) {
-        this.name = name;
-        this.id = id;
-        this.img = img;
+    ArtistObj = function(name,id,img,pos) {
+        this.name = name || undefined;
+        this.id = id || undefined;
+        this.img = img || undefined;
+        this.pos = pos || undefined;
 
 
     };
@@ -175,7 +176,7 @@ var ARTISTS  = (function(a,mapi,keydep) {
 
     //public
     sub.artistsInLocalStorage = artistsInLocalStorage;
-    sub.pos = pos;
+    sub.ArtistObj = ArtistObj;
 
 
     return a;

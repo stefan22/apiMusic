@@ -1,3 +1,26 @@
+/*
+  to improve on previous popupinfo.js going forward
+  =================================================
+
+  - constructor should stay only in artists.js and need to utilize its
+    methods there instead of creating new ones here instead.
+
+  - having said that remove object constructor and convert its prototype method here,
+    in this page into a reg function. 
+    Make it public, and create an instance of it here in order to utilize its built-in properties built.
+
+  - i'm also calling image click events in both pages, so I was forced to add too many
+    if statements, in order to avoid collisions in previous popupinfo.js script.
+
+  - mainly because I decided to no longer use the image overlay from artists.js and 
+    I'm using now a fullpage popup instead.
+    So I need to either disable the method call for overlay in artists.js or 
+    re-write it and make it accessible here, so that it works for the popup as well.
+
+    Or just create a new method for the popup, disable img overlay call for now (maybe I'll use it later) and make both public.
+
+*/
+
 var ARTISTS = (function(a) {
 
     var sub = a.popup = a.popup || {};
