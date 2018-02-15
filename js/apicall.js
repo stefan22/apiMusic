@@ -1,9 +1,14 @@
-var MUSIC = (function(m, keydep) {
+/*
+    - it gets artist data from public api and inserts it into page
+    - it gets top artists data (limited 50-count for now)
+    - one dependency: apikey.js
+    - no public methods/properties
+*/
+
+var MAIN = (function(m, keydep) {
 
 var sub = m.music = m.music || {};
 
-//dependencies
-//keydep, dartists
 
 var jsonObj = {},
     output = '',
@@ -80,16 +85,14 @@ var jsonObj = {},
 
 
     //public
-    sub.yoman = yoman;
-    sub.apiCall = apiCall;
-    sub.jsonObj = jsonObj;
+    
 
 
     return m;
 
 
 
-})(MUSIC || {}, APIKEY.key);
+})(MAIN || {}, APIKEY.key);
 
 
 

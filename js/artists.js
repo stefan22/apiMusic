@@ -1,47 +1,42 @@
-var ARTISTS  = (function(a,mapi,keydep) {
+/*
+   - updated to reflect changes from overlay to popup 
+   - no dependencies
+   - artistObj instance (event data), getArtistLocalStorage, getArtistsOnpage set to public
+*/
+
+var ARTISTS  = (function(a) {
 
     var sub = a.dartists = a.dartists || {};
 
-    //global var
-    var pos = pos || undefined;
-        
-    //dependencies => mapi,keydep
-
     //localStorage atm
-    var artistsInLocalStorage = function() {
-        //localstorage => artists (artists.artist)
+    var getArtistLocalStorage = function() {
         var artists = localStorage.getItem('artists');
         artists = JSON.parse(artists);
-        //console.log(artists);
         return artists;
 
     },
 
     //constructor
-    ArtistObj = function(name,id,img,pos) {
-        this.name = name || undefined;
-        this.id = id || undefined;
-        this.img = img || undefined;
-        this.pos = pos || undefined;
-
-
+    ArtistObj = function(id,name,img) {
+        this.id = id || '';
+        this.name = name || '';
+        this.img = img || '';
+    
     };
 
-    //proto fn
-    ArtistObj.prototype.displayArtist = function() {
+    //to be set public
+    var artist = {};
+    //new isntance
+    artist = new ArtistObj();
+    
+
+    //proto - display name,position in footer
+    ArtistObj.prototype.displayArtistFooter = function() {
         var isname,isid;
-        //if undefined - clicked outside
-        if(this.name == undefined) {
-            //add to footer
-            isname = this.name = "click artist";
-            isid = this.id = '';
-            document.getElementById('isposition').innerHTML = '<p>' + isname + ' ' +  '<small>' + isid + '</small></p>';
-        }
-        //else
-        else {
-            //add to footer
-            document.getElementById('isposition').innerHTML = '<p>' + this.name + ' ' +  '<small>' + this.id + '</small></p>';
-        }
+        isname = this.name || undefined;
+        isid = this.id || undefined;
+        //add to footer
+        document.getElementById('isposition').innerHTML = '<p>' + this.name + ' ' +  '<small>' + this.id + '</small></p>';
 
     },
 
@@ -53,21 +48,19 @@ var ARTISTS  = (function(a,mapi,keydep) {
        //create div
        var ele = document.createElement('div'),
            han;
-       ele.classList.add('artistolay');
-       //handle
-       if(this.img !== undefined) {
-            han = this.img.parentElement;
-            han.appendChild(ele);
-       }
-       
-    
+           //add class,append
+           ele.classList.add('artistolay');
+           //handle
+           if(this.img !== undefined) {
+                han = this.img.parentElement;
+                han.appendChild(ele);
+           }
     },
 
+    //proto overlay off
     ArtistObj.prototype.ovrlayOff = function(e) {
-        var all = document.querySelectorAll('.allartists'),
-            all = all[0].children;
-            //handle
-            var han = document.querySelectorAll('.allartists')[0].children;
+        var all = document.querySelectorAll('.allartists > .artist'),
+            han;    //handle
             //cycle through artists
             if(e == "IMG") {
                 for(var i=0; i < all.length; i++) {
@@ -95,92 +88,73 @@ var ARTISTS  = (function(a,mapi,keydep) {
             }
     },
 
-
     //on page artists
-    getArtists = function(e) {
-        //to avoid collision
-        if(document.getElementById('modinfo') == null) {
+    getArtistsOnpage = function(e) {
+        if(e.target.tagName == 'IMG') {
+            //grab name - from img click
+            var name = e.target.nextElementSibling.firstElementChild.innerText,
+                //all-artists only
+                results = document.querySelectorAll('.allartists > .artist'),
+                //isImg
+                img;
 
-            if(e.target.tagName == 'IMG') {
+            for(var i=0; i < results.length; ) {
 
-                //grab name - from img click
-                var name = e.target.nextElementSibling.firstElementChild.innerText,
-                    //grabbing entire artists array
-                    results = e.target.parentElement.parentElement.parentElement.children[0].children,
-                    //position
-                    //pos,
-                    isImg;
+                if(results[i].lastChild.className == 'info') {
+                    //when-info
+                    if(results[i].lastChild.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
+                        //id,name,img
+                        this.artist.id = Number(i) + 1;
+                        this.artist.name = name;
+                        this.artist.img = e.target;
+                        this.artist.displayArtistFooter();
+                       
+                    
+                       
+                    }//if name  
 
+                } else {
+                    //when artistolay -only if using overlay
+                    if(results[i].lastChild.previousSibling.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
+                        //id,name,img
+                        id = Number(i) + 1;
+                        name = name;
+                        img = e.target;
+                       
+                    }//if name  
 
-                for(var i=0; i < results.length; i++) {
-                    var lastChild;
-                    //added spacer
-                    if(results[i].className == 'artist') {
-                        if(results[i].lastChild.className == 'info') {
+                }//else  
+                 i++;
 
-                            if(results[i].lastChild.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
-                                //console.log('name: ' + name);
-                                //console.log(Number(i) + 1);
-                                name = name;
-                                pos = Number(i) + 1;
-                                isImg = e.target;
-                               
-                            }//if name  
+            }//for
+            
 
-                        } else {
+        }//target-img
 
-                            if(results[i].lastChild.previousSibling.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
-                                //console.log('name: ' + name);
-                                //console.log(Number(i) + 1);
-                                name = name;
-                                pos = Number(i) + 1;
-                                isImg = e.target;
-                               
-                            }//if name  
-
-                        }//else  
-
-                    }//if artist
-
-                }//for
-
-            }//artist img
-
-            else {
-                //clicked outside
-                var noartist = new ArtistObj();
-                noartist.ovrlayOff(); 
-            }
-
-            var artist = new ArtistObj(name, pos, isImg);
-            artist.displayArtist();
-            artist.ovrlayOn(isImg);    
+        else {//clicked outside
+            /*
+            no-ovrlay no more
+            do nothing   
+            */
+        }
 
 
-        }//not while popupinfo is on
+    }; //getArtistsOnpage
 
 
-    }; //getArtists
+    //-overlay removed - click evt at popupinfo now
 
-
-    //evt click
-    if(document.getElementById('modinfo') == null ) {
-        //popup not there
-        document.addEventListener('click', getArtists, false);
-
-    }
+    
 
     
         
-
-
     //public
-    sub.artistsInLocalStorage = artistsInLocalStorage;
-    sub.ArtistObj = ArtistObj;
-
+    sub.getArtistLocalStorage = getArtistLocalStorage; //havent decide what to do with it yet
+    sub.getArtistsOnpage = getArtistsOnpage; //calling at popupinfo.js
+    sub.artist = artist;  //data about click event
 
     return a;
 
 
 
-})(ARTISTS || {}, MUSIC.music, APIKEY.key, );
+})(ARTISTS || {} );
