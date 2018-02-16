@@ -7,8 +7,8 @@
       at artists.js
     - just a single img click event across ARTISTS modules
     - enterdata better yet a method inside popup obj
-
 */
+
 
 var ARTISTS = (function(p) {
 
