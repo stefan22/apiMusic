@@ -6,7 +6,7 @@
     - converted prototype into a fn that handles returned event data generated 
       at artists.js
     - just a single img click event across ARTISTS modules
-    - enterdata better yet a method inside popup obj
+    - enterdata now inside popup obj
 */
 
 
@@ -64,6 +64,7 @@ var ARTISTS = (function(p) {
             outercontent = ele.createElement('div'),  //outercontent
             spanx = ele.createElement('span'),        //span
             h3x = ele.createElement('h3'),            //h3  
+            smx = ele.createElement('small'),
             innercontent = ele.createElement('div');  //innercontent
         
         //outerdiv id,class
@@ -76,6 +77,9 @@ var ARTISTS = (function(p) {
         spanx.textContent = popup.span.inner; 
         //h3 content
         h3x.textContent = popup.h3.inner;
+        //small
+        smx.textContent = "id:" + popup.h3.id;
+        
         //innercontent class, content
         innercontent.className = popup.innercontent.class;
         innercontent.innerHTML = popup.innercontent.inner;
@@ -84,6 +88,8 @@ var ARTISTS = (function(p) {
         outercontent.appendChild(spanx);
         outercontent.appendChild(h3x);
         outercontent.appendChild(innercontent);
+        outercontent.appendChild(smx);
+
         //append to outerdiv
         outerdiv.appendChild(outercontent);
         //append to dom
@@ -148,8 +154,8 @@ var ARTISTS = (function(p) {
             
            
 
-    //public
-    sub.buildpopup = buildpopup;
+    //public 
+    //sub.buildpopup = buildpopup; //dont need public fns,properties atm
     //sub.enterdata = enterdata;
 
 
