@@ -75,6 +75,9 @@
 }
 
 #modinfo h3 {
+    max-width: 100%;
+    width: 94%;
+    border-bottom: 1px solid #dcc3c3;
     margin:0;
     line-height: 40px;
     text-align: left;
@@ -88,14 +91,28 @@
 
 .modal-inner {
     min-height: 190px;
+    margin:1.25em 0;
 }
+
+.modal-inner p::first-line {
+    line-height: 18px;
+    font-size: 16px;
+    vertical-align: text-top;
+}
+
 .modal-inner p {
     color: #000000;
-    line-height: 24px;
     font-style: italic;
     font-size: 16px;
+    line-height: 25px;
     font-weight: 300;
-   
+    vertical-align: top; 
+}
+
+.modal-inner .thmb {
+    float: left;
+    margin-right: 10px;
+    color:#333;
 }
 
 .modal-inner a {

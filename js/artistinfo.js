@@ -17,13 +17,16 @@ var ARTISTINFO = (function(n,infoKey) {
         infoObj = {},
 
     infocall = function(res) {
-        //console.log(res);
-        var summary = res = infoObj.artist.bio.summary;
-        console.log(summary);
+        console.log(res);
+        var summary = res = infoObj.artist.bio.summary,
+            thumb = res = infoObj.artist.image[1]["#text"],
+            xltTag = res = infoObj.artist.name; 
+
         if(document.getElementById('modinfo')) {
+            var han = document.querySelector('#modinfo .modal-inner');
             //insert to popoup
-            document.querySelector('#modinfo .modal-inner').
-            innerHTML = '<p>' + summary + '</p>';
+            han.innerHTML = '<img class="thmb" src="' + thumb + '" width="64" height="64"alt="'+ xltTag +'" /><p>' + summary + '</p>';
+            return han;
         }
 
     }, //infocall

@@ -16,7 +16,7 @@ var jsonObj = {},
     totalCount = 50,
     //callback
     yoman = function(res) {
-        console.log(res);
+        //console.log(res);
         var allArtists = res.artists.artist;
         //output
         results += '<div class="allartists">';
