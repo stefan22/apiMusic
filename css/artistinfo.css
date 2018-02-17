@@ -65,6 +65,15 @@
     
 }
 
+.modal-content small {
+    color: #844848;
+    text-align: center;
+    display: block;
+    font-weight: 200;
+    font-size: 90%;
+    font-style: oblique;
+}
+
 #modinfo h3 {
     margin:0;
     line-height: 40px;
@@ -77,9 +86,22 @@
    
 }
 
+.modal-inner {
+    min-height: 190px;
+}
 .modal-inner p {
-    color:#36251f;
+    color: #000000;
+    line-height: 24px;
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 300;
    
+}
+
+.modal-inner a {
+    display: block;
+    color: #7e0300;
+    margin-top: 10px;
 }
 
 /* x close */

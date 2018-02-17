@@ -5,7 +5,7 @@
     - no public methods/properties
 */
 
-var MAIN = (function(m, keydep) {
+var MAIN = (function(m,topArtkey) {
 
 var sub = m.music = m.music || {};
 
@@ -16,7 +16,7 @@ var jsonObj = {},
     totalCount = 50,
     //callback
     yoman = function(res) {
-        //console.log(res);
+        console.log(res);
         var allArtists = res.artists.artist;
         //output
         results += '<div class="allartists">';
@@ -47,8 +47,7 @@ var jsonObj = {},
 
     //api call
     apiCall = function(key) {
-        //passing key
-        key = keydep.getKey();
+        key = topArtkey.getKey();
         xhr = new XMLHttpRequest();
         xhr.overrideMimeType('application/json');
         xhr.onreadystatechange = function() {
@@ -85,7 +84,7 @@ var jsonObj = {},
 
 
     //public
-    
+    //nothing atm
 
 
     return m;

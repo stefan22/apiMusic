@@ -10,13 +10,13 @@
 */
 
 
-var ARTISTS = (function(p) {
+var ARTISTS = (function(p,atfo) {
 
     var sub = p.popupinfo = p.popupinfo || {};
 
-    //artists module
-    var alc = p.dartists;
-
+    //dependencies
+    var alc = p.dartists;   //artists module
+    //var atfo = p.artInfo;   //artistinfo module
 
     var popup = {
         outerdiv: {
@@ -45,20 +45,22 @@ var ARTISTS = (function(p) {
         },
         enterdata: function(artista) {
                 artista = alc.artist || {};
+                console.log(artista);
                 var name,id;
                 popup.h3.inner = name = artista.name || undefined;
                 popup.h3.id = id = artista.id || undefined;
 
                 if(name !== undefined && id !== undefined) {
                         //showtime   
-                        buildpopup();
+                        buildpopup(artista);
                 }
+                
         }//enterdata
     };//popup
 
 
     //buildpopup    
-    var buildpopup = function() {
+    var buildpopup = function(isArtista) {
         var ele = document,
             outerdiv = ele.createElement('div'),      //outerdiv
             outercontent = ele.createElement('div'),  //outercontent
@@ -82,7 +84,9 @@ var ARTISTS = (function(p) {
         
         //innercontent class, content
         innercontent.className = popup.innercontent.class;
-        innercontent.innerHTML = popup.innercontent.inner;
+
+        //pass artista -id,name,img
+        innercontent.innerHTML = atfo.apiArtistInfo(isArtista.name) || popup.innercontent.inner;
 
         //append to outercontent
         outercontent.appendChild(spanx);
@@ -141,6 +145,9 @@ var ARTISTS = (function(p) {
 
         //stars at 1
         if(alc.artist.id > 0) {
+            //call infodata
+           
+
             popup.enterdata(alc.artist);
         }
 
@@ -155,8 +162,8 @@ var ARTISTS = (function(p) {
            
 
     //public 
-    //sub.buildpopup = buildpopup; //dont need public fns,properties atm
-    //sub.enterdata = enterdata;
+    sub.buildpopup = buildpopup; //dont need public fns,properties atm
+    sub.popup = popup;
 
 
 
@@ -170,4 +177,4 @@ var ARTISTS = (function(p) {
     return p;
 
 
-})(ARTISTS || {} );
+})(ARTISTS || {}, ARTISTINFO.artInfo );

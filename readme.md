@@ -14,6 +14,6 @@
 <kbd>sample image</kbd>
 <br />
 
-![](images/artist.png)
+![](images/latest.png)
 
 <br/>
