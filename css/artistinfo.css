@@ -90,28 +90,23 @@
 }
 
 .modal-inner {
-    min-height: 190px;
+    min-height: 150px;
     margin:1.25em 0;
 }
 
-.modal-inner p::first-line {
-    line-height: 18px;
-    font-size: 16px;
-    vertical-align: text-top;
-}
 
 .modal-inner p {
     color: #000000;
     font-style: italic;
     font-size: 16px;
-    line-height: 25px;
+    line-height: 19px;
     font-weight: 300;
     vertical-align: top; 
 }
 
 .modal-inner .thmb {
     float: left;
-    margin-right: 10px;
+    margin-right: 14px;
     color:#333;
 }
 
