@@ -30,3 +30,7 @@
 ![](images/latest1.png)
 
 <br/>
+
+
+
+> `b_*.js` pages are old versions of same pages without `b_`
