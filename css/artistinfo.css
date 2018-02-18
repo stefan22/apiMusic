@@ -90,7 +90,7 @@
 }
 
 .modal-inner {
-    min-height: 150px;
+    min-height: 400px;
     margin:1.25em 0;
 }
 
@@ -137,6 +137,59 @@
 
 
 
+/* artist albums */
+
+.albums {
+    margin: 1.5em 0;
+    
+}
+
+.albums h4 {
+    font-size: 1.5em;
+    width: 94%;
+    color: #ba6746;
+    border-bottom: 1px solid #fcc8b4;
+}
+
+.artimg {
+    padding:1em 0;
+    overflow:hidden;
+}
+
+.artimg img {
+    box-shadow: 1px 1px 2px 0px #787062;
+    float: left;
+    display: inline-block;
+    margin:0 1em;
+}
+
+
+.artimg h5 {
+    font-size: 1.1em;
+    display: inline-block;
+    width: 55%;
+    text-align: right;
+    line-height: 24px;
+    vertical-align: middle;
+    color: #b26243;
+    font-weight: 400;
+    margin:1em 0 .5em 0;
+}
+
+.artimg small {
+    text-align: right;
+}
+
+
+.aminfo {
+    width: 55%;
+    display: inline-block;
+}
+
+.aminfo p {
+    text-align: right;
+    margin:.35em 0;
+}
 
 
 
