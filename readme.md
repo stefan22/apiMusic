@@ -8,7 +8,7 @@
     + [artists.js] creates artist constructor, prototype functions and displays data on page -
     + [popupinfo.js] click event data popup -
     + [artistinfo.js] second api call request to gather bio summary for click click event popup -
-    + [artistinfo.js] third request is album information (img click click event popup)
+    + [artistinfo.js] third request is album information (img click event popup)
 
 
 
