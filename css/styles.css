@@ -511,6 +511,11 @@ small {
 
 @media screen and (max-width: 414px) {
 
+    #modinfo.modalOn {
+        padding-top:20px;
+        padding-bottom: 120px;
+    }
+
     .maincontent {
         max-width: 300px;
     }
@@ -564,6 +569,10 @@ small {
 
     }
 
+    footer {
+        z-index: 7;
+    }
+
     .innerfoot a {
         font-size: 1em;
     }
@@ -571,6 +580,33 @@ small {
     #isposition p {
         line-height: 66px;
         font-size: 1.35em;
+    }
+
+    .albums .artimg img {
+        float:none;
+        margin:0 auto;
+        display: block;
+    }
+
+    .albums .artimg h5 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .albums .artimg small {
+        text-align: center;
+    }
+
+    .albums .aminfo {
+        width: 100%;
+    }
+
+    .albums .aminfo small {
+        text-align: center;
+    }
+
+    .albums .aminfo p {
+        text-align: center;
     }
 
 
@@ -600,8 +636,6 @@ small {
 
 
 }
-
-
 
 
 
