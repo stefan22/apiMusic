@@ -16,7 +16,7 @@ var ARTISTS = (function(p,atfo) {
 
     //dependencies
     var alc = p.dartists;   //artists module
-    //var atfo = p.artInfo;   //artistinfo module
+    // artistinfo module part of artistdetails
 
     var popup = {
         outerdiv: {
@@ -177,4 +177,4 @@ var ARTISTS = (function(p,atfo) {
     return p;
 
 
-})(ARTISTS || {}, ARTISTINFO.artInfo );
+})(ARTISTS || {}, ARTISTDETAILS.artinfo );

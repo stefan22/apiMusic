@@ -1,14 +1,11 @@
-/*. replaced by artistinfo.js  ***(first artistinfo.js file)***
+/*. -gets artist info from api- 
     
     • so now adding an artist bio summary (second api request) and 
-    • passing data i collected from the initial call request.
-    • third request uses mbid for their albums.
+    • third request uses mbid from previous call to get their albums.
 
-   First to do: (refactoring)
-   ==========================
-    • all new data maybe into single new object (first/second call). 
-    • infocall fn needs to go (no longer a fn) and
-    • a re-usable api call function
+   refactoring
+   ============
+   • apicall fn
 
    then:
    =====
@@ -18,127 +15,131 @@
     • load time (lady gaga took forever :)
 */
 
+
 var ARTISTINFO = (function(n,infoKey) {
 
     var sub = n.artInfo = n.artInfo || {};
 
     //dependencies => apikey
 
-    var whichArtist = '';       //'Kendrick+Lamar'
-        infoOut = '',
-        infoObj = {},
-        //first call
-        summary = '',
-        thumb = '',
-        xltTag = '',
-        //second call
-        topalbums = {},
-        mbid = '',
-        albumName = '',
-        albumCover = '',
-        playcount = '',
-
-    infocall = function(res) {
-        infoObj = res;
-        //first round of calls
-        summary = infoObj.artist.bio.summary,
-        thumb = infoObj.artist.image[1]["#text"],
-        xltTag = infoObj.artist.name;
-        mbid = infoObj.artist.mbid;
-        //album
-        apiArtistAlbum(mbid)
-
+    var infoObj = {},
+        topAlbums = {},
+        whichArtist = whichArtist || undefined;
         
 
-    }, //infocall
+    var artistDetails = {
 
+        infoCall: function(pi,whichArtist) {
+            var infoObj = pi;
+             if(infoObj.artist.name == whichArtist) {
+                //hold up values
+                    infoObj.thumb   = infoObj.artist.image[1]["#text"];
+                    infoObj.xltTag  = infoObj.artist.name;
+                    infoObj.summary = infoObj.artist.bio.summary;
+                    infoObj.mbid    = infoObj.artist.mbid;
+                //get albums
+                apiArtistInfoArtistAlbum(whichArtist, infoObj.artist.mbid);
+            }//if
 
-    albumCall = function(res) {
-        console.log(res);
-        //handle
-        var han = document.querySelector('#modinfo .modal-inner');
-        summary = summary || undefined;
-        thumb = thumb || undefined;
-        xltTag = xltTag || undefined;
-        //if popup showing
-        if(document.getElementById('modinfo')) {
-            //second round of calls
-            albumName = res.topalbums.album[0].name;
-            albumCover = res.topalbums.album[0].image[2]["#text"];
-            playcount = res.topalbums.album[0].playcount;
-
-            //insert to popoup
-            han.innerHTML = '<img class="thmb" src="' + thumb + '" width="64" height="64"alt="'+ xltTag +'" /><p>' + summary + '</p>' + '<div class="albums"><h4>About Artist</h4><div class="artimg"><img src="' + albumCover + '" width="174" height="174" /><h5><small>Top Album: </small>' + albumName + '</h5><div class="aminfo"><small>Artist</small><p>' + xltTag + '</p><small>playcount</small><p>' + playcount + '</p></div></div></div>';
-
-            return han;
+        }, //infoCall
         
-        }//if modinfo
+        albumCall: function(ai,whichArtist) {
+            topAlbums = ai;
+            if(topAlbums.topalbums.album[0].artist.name == whichArtist) {
+                //second round of calls
+                topAlbums.albumName  = topAlbums.topalbums.album[0].name;
+                topAlbums.albumCover = topAlbums.topalbums.album[0].image[2]["#text"];
+                topAlbums.playcount  = topAlbums.topalbums.album[0].playcount;  
+                   
+            }//if  
+            
+            artistDetails.onToPage(); 
+            console.log(infoObj);
+            console.log(topAlbums);
+ 
+        
+        }, //albumCall
 
+        onToPage: function() {
+             //handle
+             var han = document.querySelector('#modinfo .modal-inner');
+            //if popup showing
+            if(document.getElementById('modinfo')) {
+                //insert data
+                han.innerHTML = '<img class="thmb" src="' + infoObj.thumb + '" width="64" height="64"alt="'+ infoObj.xltTag +'" /><p>' + infoObj.summary + '</p>' + '<div class="albums"><h4>About Artist</h4><div class="artimg"><img src="' + topAlbums.albumCover + '" width="174" height="174" /><h5><small>Top Album: </small>' + topAlbums.albumName + '</h5><div class="aminfo"><small>Artist</small><p>' + infoObj.xltTag + '</p><small>playcount</small><p>' + topAlbums.playcount + '</p></div></div></div>';
 
-    },
+                return han;
+            
+            }//if modinfo
+
+        } //onToPage fn
+
+    
+    }; //artistDetails
+
 
 
     //api call - passes artist name
-    apiArtistInfo = function(whichArtist) {
-        whichArtist = whichArtist || undefined;
-        xhr = new XMLHttpRequest();
-        xhr.overrideMimeType('application/json');
-        xhr.onreadystatechange = function() {
-            if(xhr.status == 200 && xhr.readyState == 4) {
-                    infoOut = xhr.responseText;
-                    infoObj = JSON.parse(infoOut);
-                    //callback
-                    infocall(infoObj);      
-            }
-          
-        };//onreadystate
-
-        //api - getTopArtists
-        xhr.open('GET','http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist='+ whichArtist +'&api_key=' + infoKey.getKey()  + '&format=json');
-        xhr.send(null);
-
-    };
-
-
-    //api call - top artist album
-    apiArtistAlbum = function(mbid) {
+    var apiArtistInfoArtistAlbum = function(whichArtist, mbid) {
+        mbid = mbid || undefined;
         console.log(mbid);
+        var infoOut = '';
+        //mbid collected from artist
         if(typeof mbid == "string" && mbid.length > 0) {
+            //second call
+            //serverCall = function() {
+                xhr = new XMLHttpRequest();
+                xhr.overrideMimeType('application/json');
+                xhr.onreadystatechange = function() {
+                    if(xhr.status == 200 && xhr.readyState == 4) {
+                            infoOut = xhr.responseText;
+                            topAlbums = JSON.parse(infoOut);
+                            //callback
+                            artistDetails.albumCall(topAlbums,whichArtist);      
+                    }
+                  
+                };//onreadystate
 
+                //api - getTopArtists
+                xhr.open('GET','http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=' + mbid  + '&api_key=' + infoKey.getKey() + '&format=json');
+                xhr.send(null);
+
+
+            //}(); //serverCall
+
+        }//if mbid 
+
+        else {
+            //first call
             xhr = new XMLHttpRequest();
             xhr.overrideMimeType('application/json');
             xhr.onreadystatechange = function() {
                 if(xhr.status == 200 && xhr.readyState == 4) {
                         infoOut = xhr.responseText;
-                        topalbums = JSON.parse(infoOut);
+                        infoObj = JSON.parse(infoOut);
                         //callback
-                        albumCall(topalbums);      
+                        artistDetails.infoCall(infoObj,whichArtist);             
                 }
               
             };//onreadystate
 
             //api - getTopArtists
-            xhr.open('GET','http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=' + mbid  + '&api_key=' + infoKey.getKey() + '&format=json');
+            xhr.open('GET','http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist='+ whichArtist +'&api_key=' + infoKey.getKey()  + '&format=json');
             xhr.send(null);
 
-        }//if mbid   
+        } //else  
 
-    };//apiArtistAlbum
+        
 
-
-
-
+    }; //apiArtistInfoArtistAlbum
 
 
 
 
-
-
-    
 
     //public
-    sub.apiArtistInfo = apiArtistInfo;
-    sub.infocall = infocall;
+    sub.apiArtistInfoArtistAlbum = apiArtistInfoArtistAlbum;
+    
 
 
     return n;
