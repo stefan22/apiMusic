@@ -26,7 +26,7 @@ var ARTISTDETAILS = (function(b,infoKey) {
                 //second round of calls | this is top album
                 topAlbums.albumName  = topAlbums.topalbums.album[0].name;
                 topAlbums.albumCover = topAlbums.topalbums.album[0].image[2]["#text"];
-                topAlbums.playcount  = topAlbums.topalbums.album[0].playcount;  
+                topAlbums.playcount  = topAlbums.topalbums.album[0].playcount; 
     
                 var allbums =  topAlbums.topalbums.album;
                 //highest playcount
@@ -35,11 +35,14 @@ var ARTISTDETAILS = (function(b,infoKey) {
                 for(var a=0; a < allbums.length; a++) {
                     if(Number(allbums[a].playcount) > highest) {
                         highest = Number(allbums[a].playcount);
-                        himg = allbums[a].image[0]["#text"];
+                        himg = allbums[a].image[1]["#text"];
                         halbum = allbums[a].name;    
                     }//if   
                 
                 }//for
+                topAlbums.bpchighest = highest;
+                topAlbums.bpcimage = himg;
+                topAlbums.bpcname = halbum;
 
             }//if  
             
@@ -53,10 +56,12 @@ var ARTISTDETAILS = (function(b,infoKey) {
             //if popup showing
             if(document.getElementById('modinfo')) {
                 //insert data
-                han.innerHTML = '<img class="thmb" src="' + artist.thumb + '" width="64" height="64"alt="'+ artist.xltTag +'" /><p>' + artist.summary + '</p>' + '<div class="albums"><h4>About Artist</h4><div class="artimg"><img src="' + topAlbums.albumCover + '" width="174" height="174" /><h5><small>Top Album: </small>' + topAlbums.albumName + '</h5><div class="aminfo"><small>Artist</small><p>' + artist.xltTag + '</p><small>playcount</small><p>' + topAlbums.playcount + '</p></div></div></div>';
+                han.innerHTML = '<img class="thmb" src="' + artist.thumb + '" width="64" height="64"alt="'+ artist.xltTag +'" /><p>' + artist.summary + '</p>' + '<div class="albums"><h4>About Artist</h4><div class="artimg"><img src="' + topAlbums.albumCover + '" width="174" height="174" /><h5><small>Top Album: </small>' + topAlbums.albumName + '</h5><div class="aminfo"><small>Artist</small><p>' + artist.xltTag + '</p><small>playcount</small><p>' + topAlbums.playcount + '</p></div><div class="moreinfo"><button id="moreinfo">Click for more</button></div><div class="artistmore"><div class="innermore"><h5>Highest Playcount Album: <small>'+ topAlbums.bpcname +'</small></h5><img src="'+ topAlbums.bpcimage +'" /><h5>Playcount: <small>'+ topAlbums.bpchighest +'</small></h5></div></div></div></div>';
 
                 return han;
             
+                
+
             }//if modinfo
 
         } //onToPage fn
@@ -94,8 +99,7 @@ var ARTISTDETAILS = (function(b,infoKey) {
     };//apiArtistAlbum
 
 
-
-
+    
 
     
 

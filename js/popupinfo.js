@@ -122,6 +122,21 @@ var ARTISTS = (function(p,atfo) {
             parentElement.removeChild(document.getElementById('modinfo'));
         }
 
+        if(e.target.id == "moreinfo") {
+            //if already open    
+            if(document.querySelector('.artistmore').style.display == "block") {
+                document.querySelector('.artistmore').style.display = "none";
+                document.querySelector('.artistmore').style.opacity = 0;
+                document.getElementById('moreinfo').textContent = "Click for more";
+            }else {
+                document.querySelector('.artistmore').style.display = "block";
+                document.querySelector('.artistmore').style.opacity = 1;
+                document.getElementById('moreinfo').textContent = "Click for less";
+            }
+
+
+        }//if moreinfo button
+
     };
 
    
@@ -139,6 +154,7 @@ var ARTISTS = (function(p,atfo) {
     //init img evt
     document.getElementById('results').
     addEventListener('click', function(e) {
+        console.log(e);
         if(e.target.tagName == "IMG") {
             alc.getArtistsOnpage(e);
         }
@@ -146,13 +162,26 @@ var ARTISTS = (function(p,atfo) {
         //stars at 1
         if(alc.artist.id > 0) {
             //call infodata
-           
-
             popup.enterdata(alc.artist);
         }
 
 
     },false);
+
+
+
+   
+
+      
+
+
+
+
+
+
+
+
+
 
         
 
@@ -164,6 +193,7 @@ var ARTISTS = (function(p,atfo) {
     //public 
     sub.buildpopup = buildpopup; //dont need public fns,properties atm
     sub.popup = popup;
+    
 
 
 

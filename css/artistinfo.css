@@ -2,6 +2,8 @@
 #modinfo {
     font-family: 'Wendy+One|Libre+Baskerville', Helvetica, sans-serif;
     box-sizing: border-box;
+    z-index: 4;
+    
 }
 
 .modal {
@@ -46,6 +48,7 @@
     left: 0%;
     top: 0%;
     padding-top: 100px;
+    padding-bottom: 150px;
     display: block;
     overflow: auto; 
     opacity: .95;
@@ -190,6 +193,62 @@
     text-align: right;
     margin:.35em 0;
 }
+
+
+/* artist album */
+
+.moreinfo {
+    margin:0 1em;
+    display: inline-block;
+    clear: left;
+    float: left;
+}
+
+
+
+button {
+    padding: 7px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 2em 0 2em;
+    box-shadow: 0px 1px 1px 1px #d1d1d1;
+    background: #D84315;
+    color: floralwhite;
+    cursor: pointer;
+    width:115px;
+}
+
+button:focus, button:active {
+    outline: none;
+    
+}
+
+
+.artistmore {
+    display: none;
+    opacity: 0;
+    clear:both;
+    transition: all 3s ease-in-out;
+}
+
+
+.innermore {
+    display: block;
+    height: 200px;
+    border: 1px solid #d2b9ba;
+    padding: 1em;
+    transition: all .5s ease-in;
+}
+
+.innermore h5 {
+    float: right;
+}
+
+.innermore img {
+    margin:0;
+}
+
+
 
 
 
