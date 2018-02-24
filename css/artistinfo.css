@@ -235,13 +235,19 @@ button:focus, button:active {
 .innermore {
     display: block;
     height: 200px;
-    border: 1px solid #d2b9ba;
+    border:1px solid #f3e1e2;
     padding: 1em;
     transition: all .5s ease-in;
+    width:94%;
+    background-color: #fdefed;
+    border-radius: 4px;
 }
 
 .innermore h5 {
     float: right;
+    margin:0;
+    font-size: 1em;
+    margin-right: 2em;
 }
 
 .innermore img {

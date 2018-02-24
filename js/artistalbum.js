@@ -71,9 +71,17 @@ var ARTISTDETAILS = (function(b,infoKey) {
 
 
     //api call - top artist album
-    var apiArtistAlbum = function(mbid,whichArtist,infoObj) {
+    var apiArtistAlbum = function(mbid,whichArtist,infoObj) {debugger;
         artist = infoObj;
         artist.mbid = mbid;
+        artist.genre = infoObj.tags1;
+        artist.wiki = infoObj.wikilink;
+        artist.similar1name = infoObj.similar1name;
+        artist.similar1img = infoObj.similar1img;
+        artist.similar2name = infoObj.similar2name;
+        artist.similar2img = infoObj.similar2img;
+        artist.similar3name = infoObj.similar3name;
+        artist.similar3img = infoObj.similar3img;
 
         var infoOut = '';
         if(typeof mbid == "string" && mbid.length > 0) {
