@@ -109,6 +109,10 @@ var ARTISTS = (function(p,atfo) {
 
     //outside click fn
     var outsideMod = function(e) {
+        //top album playcount,highest playcount album
+        var apc = document.getElementById('apc'),
+            hpc = document.getElementById('hpc');
+
         if(e.target.className == "modal modalOn") {
             //remove div
             document.getElementById('modinfo').
@@ -132,6 +136,7 @@ var ARTISTS = (function(p,atfo) {
                 document.querySelector('.artistmore').style.display = "block";
                 document.querySelector('.artistmore').style.opacity = 1;
                 document.getElementById('moreinfo').textContent = "Click for less";
+
             }
 
 

@@ -76,20 +76,20 @@ var ARTISTS  = (function(a) {
             //else
             else {
 
-                for(var i=0; i < all.length; i++) {
+                for(var h=0; h < all.length; h++) {
                     //remove overlay
-                    if(all[i].className == "artist") {
-                        if(all[i].lastElementChild.className == 'artistolay') {
-                            han = han[i].lastChild;
-                            all[i].lastElementChild.parentElement.removeChild(han);
+                    if(all[h].className == "artist") {
+                        if(all[h].lastElementChild.className == 'artistolay') {
+                            han = han[h].lastChild;
+                            all[h].lastElementChild.parentElement.removeChild(han);
                         }
                     }//if artist      
                 }//for
             }
-    },
+    };
 
     //on page artists
-    getArtistsOnpage = function(e) {
+    var getArtistsOnpage = function(e) {
         if(e.target.tagName == 'IMG') {
             //grab name - from img click
             var name = e.target.nextElementSibling.firstElementChild.innerText,
@@ -117,6 +117,7 @@ var ARTISTS  = (function(a) {
                     //when artistolay -only if using overlay
                     if(results[i].lastChild.previousSibling.firstChild.innerText.toUpperCase() === name.toUpperCase()) {
                         //id,name,img
+                        var id;
                         id = Number(i) + 1;
                         name = name;
                         img = e.target;

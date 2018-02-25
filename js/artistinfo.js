@@ -33,11 +33,11 @@ var ARTISTDETAILS = (function(n,infoKey) {
                     infoObj.wikilink = infoObj.artist.bio.links.link.href;
                     infoObj.ontour = infoObj.artist.ontour; //1 or 2
                     infoObj.similar1name = infoObj.artist.similar.artist[0].name;
-                    infoObj.similar1img = infoObj.artist.similar.artist[0].image[0]["#text"];
+                    infoObj.similar1img = infoObj.artist.similar.artist[0].image[1]["#text"];
                     infoObj.similar2name = infoObj.artist.similar.artist[1].name;
-                    infoObj.similar2img = infoObj.artist.similar.artist[1].image[0]["#text"];
+                    infoObj.similar2img = infoObj.artist.similar.artist[1].image[1]["#text"];
                     infoObj.similar3name = infoObj.artist.similar.artist[2].name;
-                    infoObj.similar3img = infoObj.artist.similar.artist[2].image[0]["#text"];
+                    infoObj.similar3img = infoObj.artist.similar.artist[2].image[1]["#text"];
                     infoObj.tags1 = infoObj.artist.tags.tag[0].name; //music genre
 
                 //get albums
@@ -56,7 +56,7 @@ var ARTISTDETAILS = (function(n,infoKey) {
     //api call - passes artist name
     var apiArtistInfo = function(whichArtist) {
         var datresp = '';
-        xhr = new XMLHttpRequest();
+        var xhr = new XMLHttpRequest();
         xhr.overrideMimeType('application/json');
         xhr.onreadystatechange = function() {
             if(xhr.status == 200 && xhr.readyState == 4) {

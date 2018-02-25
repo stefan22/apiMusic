@@ -170,7 +170,7 @@
 .artimg h5 {
     font-size: 1.1em;
     display: inline-block;
-    width: 55%;
+    width: 57%;
     text-align: right;
     line-height: 24px;
     vertical-align: middle;
@@ -185,7 +185,7 @@
 
 
 .aminfo {
-    width: 55%;
+    width: 57%;
     display: inline-block;
 }
 
@@ -253,6 +253,56 @@ button:focus, button:active {
 .innermore img {
     margin:0;
 }
+
+.similar {
+    display: block;
+    overflow:hidden;
+    margin:1em 0;
+}
+
+.similar h6 {
+    font-size: 1.25em;
+    color: #ba6746;
+    border-bottom: 1px solid #fcc8b4;
+    width:94%;
+    margin:1em 0;
+}
+
+.allfigs {
+    margin:0 1em;
+}
+
+
+figure {
+    display: inline-block;
+    width:30%;
+    overflow: hidden;
+    margin:0;
+
+}
+
+figure img {
+    box-shadow: 1px 1px 2px 0px #787062;
+}
+
+figcaption {
+    display: inline-block;
+    line-height: 24px;
+    max-height: 24px;
+    font-size: .8em;
+    color: #8e4d34;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

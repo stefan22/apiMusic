@@ -32,7 +32,7 @@ var jsonObj = {},
             results += '<img src="' + allArtists[i].image[4]["#text"] + '" />';
             results += '<div class="info">';
             results += '<h3>' + allArtists[i].name + '</h3>';
-            results += '<h4>playcount: <br/>' +  + allArtists[i].playcount + '</h4>';   
+            results += '<h4>playcount: <br/>' +  allArtists[i].playcount + '</h4>';   
             results += '<h4>listeners: </br/>' + allArtists[i].listeners + '</h4>';   
             results += '</div></div>';  //info,artist
 
@@ -48,7 +48,7 @@ var jsonObj = {},
     //api call
     apiCall = function(key) {
         key = topArtkey.getKey();
-        xhr = new XMLHttpRequest();
+        var xhr = new XMLHttpRequest();
         xhr.overrideMimeType('application/json');
         xhr.onreadystatechange = function() {
             if(xhr.status == 200 && xhr.readyState == 4) {

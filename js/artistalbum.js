@@ -35,7 +35,7 @@ var ARTISTDETAILS = (function(b,infoKey) {
                 for(var a=0; a < allbums.length; a++) {
                     if(Number(allbums[a].playcount) > highest) {
                         highest = Number(allbums[a].playcount);
-                        himg = allbums[a].image[1]["#text"];
+                        himg = allbums[a].image[2]["#text"];
                         halbum = allbums[a].name;    
                     }//if   
                 
@@ -43,6 +43,7 @@ var ARTISTDETAILS = (function(b,infoKey) {
                 topAlbums.bpchighest = highest;
                 topAlbums.bpcimage = himg;
                 topAlbums.bpcname = halbum;
+                topAlbums.bpcnothighest = "Top Album also highest by playcount";
 
             }//if  
             
@@ -56,7 +57,7 @@ var ARTISTDETAILS = (function(b,infoKey) {
             //if popup showing
             if(document.getElementById('modinfo')) {
                 //insert data
-                han.innerHTML = '<img class="thmb" src="' + artist.thumb + '" width="64" height="64"alt="'+ artist.xltTag +'" /><p>' + artist.summary + '</p>' + '<div class="albums"><h4>About Artist</h4><div class="artimg"><img src="' + topAlbums.albumCover + '" width="174" height="174" /><h5><small>Top Album: </small>' + topAlbums.albumName + '</h5><div class="aminfo"><small>Artist</small><p>' + artist.xltTag + '</p><small>playcount</small><p>' + topAlbums.playcount + '</p></div><div class="moreinfo"><button id="moreinfo">Click for more</button></div><div class="artistmore"><div class="innermore"><h5>Highest Playcount Album: <small>'+ topAlbums.bpcname +'</small></h5><img src="'+ topAlbums.bpcimage +'" /><h5>Playcount: <small>'+ topAlbums.bpchighest +'</small></h5></div></div></div></div>';
+                han.innerHTML = '<img class="thmb" src="' + artist.thumb + '" width="64" height="64"alt="'+ artist.xltTag +'" /><p>' + artist.summary + '</p>' + '<div class="albums"><h4>About Artist</h4><div class="artimg"><img src="' + topAlbums.albumCover + '" width="174" height="174" /><h5><small>Top Album:</small>' + topAlbums.albumName + '</h5><div class="aminfo"><small>Artist</small><p>' + artist.xltTag + '</p><small>Playcount</small><p id="apc">' + topAlbums.playcount + '</p></div><div class="moreinfo"><button id="moreinfo">Click for more</button></div><div class="artistmore"><div class="innermore"><h5>Highest Playcount Album: <small>'+ topAlbums.bpcname +'</small></h5><img src="'+ topAlbums.bpcimage +'" /><h5>Playcount: <small>'+ topAlbums.bpchighest +'</small></h5><h5>Genre: <small>'+ artist.genre +'</small></h5></div></div></div></div><div class="similar"><h6>Similar Artists</h6><div class="allfigs"><figure><a href="#" alt="" target="_blank"> <img src="'+ artist.similar1img +'" width="64" height="64"></a><figcaption>'+ artist.similar1name +'</figcaption></figure> <figure><a href="#" alt="" target="_blank"> <img src="'+ artist.similar2img +'" width="64" height="64"></a><figcaption>'+ artist.similar2name +'</figcaption></figure> <figure><a href="#" alt="" target="_blank"> <img src="'+ artist.similar3img +'" width="64" height="64"></a> <figcaption>'+ artist.similar3name +'</figcaption></figure></div></div>';
 
                 return han;
             
@@ -71,22 +72,29 @@ var ARTISTDETAILS = (function(b,infoKey) {
 
 
     //api call - top artist album
-    var apiArtistAlbum = function(mbid,whichArtist,infoObj) {debugger;
+    var apiArtistAlbum = function(mbid,whichArtist,infoObj) {
         artist = infoObj;
         artist.mbid = mbid;
         artist.genre = infoObj.tags1;
         artist.wiki = infoObj.wikilink;
-        artist.similar1name = infoObj.similar1name;
-        artist.similar1img = infoObj.similar1img;
-        artist.similar2name = infoObj.similar2name;
-        artist.similar2img = infoObj.similar2img;
-        artist.similar3name = infoObj.similar3name;
-        artist.similar3img = infoObj.similar3img;
+        
+        if(artist.artist.similar.artist[0].name !== undefined) {
+            artist.similar1name = artist.artist.similar.artist[0].name;
+            artist.similar1img = artist.artist.similar.artist[0].image[1]["#text"];
+            artist.similar2name = artist.artist.similar.artist[1].name;
+            artist.similar2img = artist.artist.similar.artist[1].image[1]["#text"];
+            artist.similar3name = artist.artist.similar.artist[2].name;
+            artist.similar3img = artist.artist.similar.artist[2].image[1]["#text"];
+            artist.tags1 = artist.artist.tags.tag[0].name; //music genre
+
+
+        }
+        
 
         var infoOut = '';
         if(typeof mbid == "string" && mbid.length > 0) {
 
-            xhr = new XMLHttpRequest();
+            var xhr = new XMLHttpRequest();
             xhr.overrideMimeType('application/json');
             xhr.onreadystatechange = function() {
                 if(xhr.status == 200 && xhr.readyState == 4) {

@@ -14,6 +14,32 @@
     + [artistalbum.js] handles third request about album information, and brings it into the page along with artist info.
     + [artistalbum.js] created a 'click for more' button inside popup, where i'll be showing more information about the
     + [artistalbum.js] artist/album (like a popup inside a popup).
+    + [artistalbum.js] 'click for more' shows atm 'highest playcount album'; which is sometimes is different than the top album.
+    + [artistalbum.js] added 3 similar artists by genre.
+
+
+
+<br/>
+<kbd>added click more button and similar artists</kbd>
+<br />
+
+![](images/plusClickmore.png)
+
+<br/>
+
+
+
+<br/>
+<kbd>added Similar artists</kbd>
+<br />
+
+![](images/plusSimilar.png)
+
+<br/>
+
+
+
+
 
 
 
