@@ -1,7 +1,7 @@
 # musicApp 
 ### [this branch serves as backup]
 
-> (in progress)
+> (up to this point)
 
 - extracting music data from a public api
 - so far i got a few modules 
