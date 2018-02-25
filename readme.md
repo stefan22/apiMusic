@@ -13,7 +13,7 @@
     + [artistinfo.js] now it passes the artist info to artistalbum.js
     + [artistalbum.js] handles third request about album information, and brings it into the page along with artist info.
     + [artistalbum.js] popup inside popup
-    + [artistalbum.js] 'click for more' shows atm 'highest playcount album'; which is sometimes different than top album.
+    + [artistalbum.js] 'click for more' => 'highest playcount album'; which is sometimes different than top album.      
     + [artistalbum.js] added 3 similar artists by genre.
 
 
