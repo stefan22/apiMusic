@@ -1,6 +1,5 @@
 /*
-	added a mini-express - cors, body-parser,removed store
-	plan: i need a plan, some routing
+	express - cors, body-parser,removed store
 */
 
 var express = require("express");
