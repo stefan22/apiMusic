@@ -1,0 +1,29 @@
+{
+  "name": "apiMusic",
+  "version": "1.0.0",
+  "description": "planning to add routes w/express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefan22/apiMusic.git"
+  },
+  "keywords": [
+    "express",
+    "server",
+    "nodejs"
+  ],
+  "author": "stefano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stefan22/apiMusic/issues"
+  },
+  "homepage": "https://github.com/stefan22/apiMusic#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2"
+  }
+}
