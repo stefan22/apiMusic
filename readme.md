@@ -1,6 +1,9 @@
 # musicApp
 > (in progress)
 
+> about: `play-as-you-go` project that started out of an IIFE function; which then turned into an 
+api-data-grabbing  modular js application, and it has just now branched out into a node express app.  &nbsp; &nbsp;  :bug:
+
 > `branchZero` is the original branch
 
 - extracting music data from a public api
