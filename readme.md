@@ -1,6 +1,8 @@
 # musicApp
 > (in progress)
 
+> `branchZero` is the original branch
+
 - extracting music data from a public api
 - so far i got a few modules 
     + [getallartists.js] main script api call
@@ -15,7 +17,11 @@
     + [artistalbum.js] popup inside popup
     + [artistalbum.js] 'click for more' => 'highest playcount album'; which is sometimes different than top album.      
     + [artistalbum.js] added 3 similar artists by genre.
-    + [devDependencies] added node express server, and reload: `npm start` (localserver)
+    
+    + [branchZero]     created new branch cause i'm changing folder structure, and adding node express 
+    + [devDependencies] added node express server, and reload/plugin
+    
+    
 
 
 
