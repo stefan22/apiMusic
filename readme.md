@@ -2,9 +2,8 @@
 > (in progress)
 
 ### before folder re-structuring SAVE - cause not sure where/how this project would end up.
-- this is been a `play-as-you-go project`, that started out of me having a problem getting a prototype method working   
-  inside of an IIFE function; which then wondered into a modular js application, api-data-grabbing, and just now (a     
-  bit too late) into a node express app with routes etc. -just serving static files atm.
+- this is been a `play-as-you-go project`, that started out of an IIFE function; which then turned into a modular    
+  js application, api-data-grabbing, and just now developing into a node express app
 
 - extracting music data from a public api
 - so far i got a few modules 
