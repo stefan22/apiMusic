@@ -23,7 +23,7 @@
 <kbd>added click more button and similar artists</kbd>
 <br />
 
-![](images/plusClickmore.png)
+![](public/images/plusClickmore.png)
 
 <br/>
 
@@ -33,7 +33,7 @@
 <kbd>added Similar artists</kbd>
 <br />
 
-![](images/plusSimilar.png)
+![](public/images/plusSimilar.png)
 
 <br/>
 
@@ -48,7 +48,7 @@
 <kbd>latest screenshot</kbd>
 <br />
 
-![](images/verylatest.png)
+![](public/images/verylatest.png)
 
 <br/>
 
@@ -57,7 +57,7 @@
 <kbd>sample image</kbd>
 <br />
 
-![](images/latest1.png)
+![](public/images/latest1.png)
 
 <br/>
 
