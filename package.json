@@ -4,7 +4,8 @@
   "description": "retrieves data from public api",
   "main": "app.js",
   "scripts": {
-    "start": "node app && open http://localhost:3000"
+    "start": "npm test && node app",
+    "test": "open http://localhost:3000"
   },
   "repository": {
     "type": "git",
