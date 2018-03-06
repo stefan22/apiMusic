@@ -1,9 +1,7 @@
 # musicApp
 > (in progress)
 
-### before folder re-structuring SAVE - cause not sure where/how this project would end up.
-- this is been a `play-as-you-go project`, that started out of an IIFE function; which then turned into a modular    
-  js application, api-data-grabbing, and just now developing into a node express app
+### before folder re-structuring SAVED - cause not sure where/how this project would end up.
 
 - extracting music data from a public api
 - so far i got a few modules 
