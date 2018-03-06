@@ -1,8 +1,12 @@
 .DS_Store
+isnogo/
 js/apikey.js
 x00*
 apiinfo.js
-xout/*
+/xout/*
 node_modules/
+package-lock.json
+.*
+
 
 

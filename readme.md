@@ -15,6 +15,7 @@
     + [artistalbum.js] popup inside popup
     + [artistalbum.js] 'click for more' => 'highest playcount album'; which is sometimes different than top album.      
     + [artistalbum.js] added 3 similar artists by genre.
+    + [devDependencies] added node express server, and reload: `npm start` (localserver)
 
 
 
@@ -63,3 +64,7 @@
 
 
 > `b_*.js` pages are old versions of same pages without `b_`
+
+
+
+

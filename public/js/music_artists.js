@@ -63,6 +63,8 @@ var jsonObj = {},
                             'artists',
                             JSON.stringify(jsonObj.artists.artist)
                         );
+
+                        
                     }
                     
                     //callback
@@ -85,6 +87,7 @@ var jsonObj = {},
 
     //public
     //nothing atm
+   
 
 
     return m;
